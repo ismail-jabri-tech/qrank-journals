@@ -65,7 +65,7 @@ Open anyone's profile and a **Journal quartiles** bar sums up their publications
 
 <img src="screenshots/researchgate.png" alt="QRank quartile summary on a ResearchGate profile" width="900">
 
-<sub>Demo profiles with made-up papers and authors. The bar updates as you scroll or click *Show more*, and counts every publication loaded so far.</sub>
+<sub>Demo profiles with made-up papers and authors. The bar updates as you scroll, click *Show more* or change the filter, and counts each publication on the page once.</sub>
 
 ### Reference lists on article pages
 Publisher pages like Springer and Elsevier, and any other page with a reference list.

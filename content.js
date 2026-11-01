@@ -44,7 +44,7 @@ async function scan() {
   const links = [...document.querySelectorAll('a[href*="journal/"]')]
     .filter(a => !done.has(a) && JOURNAL_PAGE.test(a.pathname) && !a.closest(SKIP));
   links.forEach(a => done.add(a));
-  if (!nodes.length && !links.length) return;
+  if (!nodes.length && !links.length) return summary(); // papers removed (a filter): recount what is left
   const before = nodes.map(n => n.data), items = profileItems(), pubs = items.map(i => i.el);
   const scholarVenue = n => n.parentElement.matches(SCHOLAR_VENUE);
   const venue = n => scholarVenue(n) || pubs.some(p => p.contains(n)) && !TYPES.test(n.data.trim()) && !UI_WORDS.test(n.data.trim());
@@ -157,18 +157,18 @@ function profileItems() {
 }
 
 const ORDER = ['Q1', 'Q2', 'Q3', 'Q4', 'NR', 'none'];
-// Every publication seen on this profile, by its paper link: scrolling loads more (and long lists may unload the
-// ones above), so the bar counts all of them, not just what is on screen. Reset when another profile opens.
-const seen = new Map();
-let seenOn = '';
 function summary(items = profileItems()) {
-  const old = document.getElementById('qrank-sum'), page = location.href.split('#')[0];
-  if (page !== seenOn) { seen.clear(); seenOn = page; }
+  const old = document.getElementById('qrank-sum');
   if (!items.length) return old?.remove();
-  // The last badge is the venue's (a title can contain a journal name too).
-  for (const { el, venue } of items)
-    seen.set(el.querySelector('a.gsc_a_at, a[href*="publication/"]')?.href ?? el.textContent.slice(0, 300),
-      [...venue?.querySelectorAll('.qrank') ?? []].at(-1)?.textContent ?? 'none');
+  // One entry per paper, keyed by its id: ResearchGate links carry changing tracking parameters ("?_sg=...") and a
+  // paper can be rendered twice. The last badge is the venue's (a title can contain a journal name too).
+  const seen = new Map();
+  for (const { el, venue } of items) {
+    const href = el.querySelector('a.gsc_a_at, a[href*="publication/"]')?.href;
+    const key = href?.match(/publication\/(\d+)/)?.[1] ?? href ?? el;
+    const q = [...venue?.querySelectorAll('.qrank') ?? []].at(-1)?.textContent ?? 'none';
+    if ((seen.get(key) ?? 'none') === 'none') seen.set(key, q);
+  }
   const count = Object.fromEntries(ORDER.map(q => [q, 0]));
   for (const q of seen.values()) count[q.replace('*', '')]++; // "Q4*" (journalseeker.com) counts as Q4
   const starred = [...seen.values()].some(q => q.endsWith('*'));
