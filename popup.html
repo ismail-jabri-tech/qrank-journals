@@ -1,0 +1,30 @@
+<!doctype html>
+<meta charset="utf-8">
+<body style="width:260px;font:13px sans-serif;margin:12px">
+  <label style="display:flex;justify-content:space-between;align-items:center;font-weight:bold;
+    padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #ddd;cursor:pointer">
+    Show quartile badges <input id="on" type="checkbox" style="width:18px;height:18px;accent-color:#43a047"></label>
+  <label style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin:-4px 0 10px;
+    padding-bottom:10px;border-bottom:1px solid #ddd;color:#555;font-size:12px;cursor:pointer">
+    <span>Backup: check journalseeker.com for profile journals missing from SCImago (older data, shown as <b>Q*</b>)</span>
+    <input id="seek" type="checkbox" style="flex:none;width:16px;height:16px;accent-color:#43a047"></label>
+  <div id="ok" hidden><b style="color:#43a047">✓ SCImago CSV loaded</b> <span id="src" style="color:#777"></span></div>
+  <div id="missing" hidden>
+    <b>QRank needs the SCImago CSV</b>
+    <ol style="padding-left:18px">
+      <li>Open SCImago and click <i>Download data</i>.</li>
+      <li>Choose the downloaded file below.</li>
+    </ol>
+  </div>
+  <p style="margin:10px 0 6px"><b>Update CSV</b></p>
+  <a href="https://www.scimagojr.com/journalrank.php" target="_blank"
+     style="display:block;text-align:center;padding:6px;background:#43a047;color:#fff;border-radius:4px;text-decoration:none">
+    Download latest CSV</a>
+  <label style="display:block;text-align:center;padding:6px;margin-top:6px;border:1px solid #43a047;color:#43a047;border-radius:4px;cursor:pointer">
+    Choose CSV file…<input id="file" type="file" accept=".csv" hidden></label>
+  <p id="msg" style="margin:6px 0 0;color:#d32f2f"></p>
+  <p style="margin:12px 0 6px;padding-top:10px;border-top:1px solid #ddd"><b>PDF article</b></p>
+  <button id="pdf" style="width:100%;padding:6px;background:#1565c0;color:#fff;border:0;border-radius:4px;font:13px sans-serif;cursor:pointer">
+    Show quartiles in this PDF</button>
+  <script src="popup.js"></script>
+</body>

@@ -1,0 +1,28 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>QRank · PDF</title>
+<style>
+  body { margin: 0; background: #525659; font: 14px sans-serif; }
+  #bar { position: sticky; top: 0; z-index: 9; display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center;
+    padding: 8px 16px; background: #323639; color: #eee; box-shadow: 0 1px 4px #0006; }
+  #bar a, #bar button { color: #8ab4f8; background: none; border: 0; font: inherit; cursor: pointer; padding: 0; }
+  #sum span { font-weight: bold; margin-right: 12px; }
+  #pages { padding: 16px 0; }
+  .page { position: relative; margin: 0 auto 12px; background: #fff; box-shadow: 0 2px 8px #0008; }
+  .page canvas { display: block; }
+  .hl { position: absolute; pointer-events: none; }
+  .qb { position: absolute; padding: 0 4px; border-radius: 6px; color: #fff; font-weight: bold; text-decoration: none;
+    line-height: 1.25; white-space: nowrap; box-shadow: 0 0 0 1.5px #fff; }
+</style>
+<body>
+  <div id="bar">
+    <b>QRank</b>
+    <span id="msg">Reading PDF…</span>
+    <span id="sum"></span>
+    <button id="jump" hidden>Go to references ↓</button>
+    <a id="orig" target="_self">Open original PDF</a>
+  </div>
+  <div id="pages"></div>
+  <script src="sjr.js"></script>
+  <script type="module" src="refs.js"></script>
+</body>

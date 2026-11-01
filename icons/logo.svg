@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <g font-family="Segoe UI, Helvetica, Arial, sans-serif" font-weight="700" font-size="22" fill="#fff" text-anchor="middle">
+    <rect x="4" y="4" width="56" height="56" rx="14" fill="#43a047"/><text x="32" y="40">Q1</text>
+    <rect x="68" y="4" width="56" height="56" rx="14" fill="#c9a400"/><text x="96" y="40">Q2</text>
+    <rect x="4" y="68" width="56" height="56" rx="14" fill="#ef6c00"/><text x="32" y="104">Q3</text>
+    <rect x="68" y="68" width="56" height="56" rx="14" fill="#d32f2f"/><text x="96" y="104">Q4</text>
+  </g>
+</svg>
