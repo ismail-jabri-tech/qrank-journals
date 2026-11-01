@@ -180,9 +180,9 @@ function summary(items = profileItems()) {
   box.dataset.key = key;
   box.style.cssText = 'margin:12px 0;padding:12px 14px;border:1px solid #e3e3e3;border-radius:10px;background:#fafafa;' +
     'font:13px/1.35 sans-serif;color:#333;text-align:left';
-  box.innerHTML = '<div style="display:flex;justify-content:space-between;gap:12px"><b>Journal quartiles</b>' +
-    `<span>Total: <b>${seen.size}</b> publication${seen.size === 1 ? '' : 's'}</span></div>` +
-    '<div style="display:flex;gap:2px;margin:8px 0 6px;border-radius:6px;overflow:hidden">' +
+  box.innerHTML = '<b>Journal quartiles</b><div style="display:flex;gap:2px;margin:8px 0 6px;border-radius:6px;overflow:hidden">' +
+    `<div style="flex:none;margin-right:4px;padding:5px 10px;background:#14213d;color:#fff"><b>Total</b><br>` +
+    `${seen.size} publication${seen.size === 1 ? '' : 's'}</div>` +
     ORDER.filter(q => count[q]).map(q => `<div style="flex:${count[q]};min-width:64px;padding:5px 8px;` +
       `background:${q === 'none' ? '#e6e6e6' : COLORS[q]};color:${q === 'none' ? '#555' : '#fff'}">` +
       `<b>${q === 'NR' ? 'Not ranked' : q === 'none' ? 'Not in SCImago / conference' : q}</b><br>` +
