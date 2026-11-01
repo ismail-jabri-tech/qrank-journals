@@ -180,13 +180,15 @@ function summary(items = profileItems()) {
   box.dataset.key = key;
   box.style.cssText = 'margin:12px 0;padding:12px 14px;border:1px solid #e3e3e3;border-radius:10px;background:#fafafa;' +
     'font:13px/1.35 sans-serif;color:#333;text-align:left';
-  box.innerHTML = '<b>Journal quartiles</b><div style="display:flex;gap:2px;margin:8px 0 6px;border-radius:6px;overflow:hidden">' +
+  box.innerHTML = '<div style="display:flex;justify-content:space-between;gap:12px"><b>Journal quartiles</b>' +
+    `<span>Total: <b>${seen.size}</b> publication${seen.size === 1 ? '' : 's'}</span></div>` +
+    '<div style="display:flex;gap:2px;margin:8px 0 6px;border-radius:6px;overflow:hidden">' +
     ORDER.filter(q => count[q]).map(q => `<div style="flex:${count[q]};min-width:64px;padding:5px 8px;` +
       `background:${q === 'none' ? '#e6e6e6' : COLORS[q]};color:${q === 'none' ? '#555' : '#fff'}">` +
       `<b>${q === 'NR' ? 'Not ranked' : q === 'none' ? 'Not in SCImago / conference' : q}</b><br>` +
       `${Math.round(100 * count[q] / seen.size)}% · ${count[q]}</div>`).join('') +
-    `</div><span style="color:#777">Based on the ${seen.size} publications loaded so far; scroll down or click ` +
-    '"Show more" to include the rest. Grey: conference papers, books, preprints and journals missing from SCImago.' +
+    '</div><span style="color:#777">Counts the publications loaded so far; scroll down or click "Show more" to ' +
+    'include the rest. Grey: conference papers, books, preprints and journals missing from SCImago.' +
     (starred ? ' Ranks marked * come from journalseeker.com (older data).' : '') + '</span>';
   if (old) return old.replaceWith(box);
   // Right before the first publication (Scholar: before its table), never into the page layout around the list.
