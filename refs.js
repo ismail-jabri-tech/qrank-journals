@@ -138,7 +138,7 @@ async function run() {
   $('msg').textContent = `${refs.length} references:`;
   $('sum').innerHTML = Object.entries(count)
     .map(([q, n]) => `<span style="color:${COLORS[q]}">${q === 'NR' ? 'Not ranked' : q} ${n}</span>`).join('') +
-    `<span style="color:#bbb">Not in SCImago ${refs.length - Object.values(count).reduce((a, b) => a + b)}</span>`;
+    `<span style="color:#bbb">Not in SCImago / conference ${refs.length - Object.values(count).reduce((a, b) => a + b)}</span>`;
   const head = ls[at];
   $('jump').hidden = false;
   $('jump').onclick = () => scrollTo({ top: head.box.offsetTop + head.items[0].y - 120, behavior: 'smooth' });

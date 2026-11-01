@@ -183,10 +183,10 @@ function summary(items = profileItems()) {
   box.innerHTML = '<b>Journal quartiles</b><div style="display:flex;gap:2px;margin:8px 0 6px;border-radius:6px;overflow:hidden">' +
     ORDER.filter(q => count[q]).map(q => `<div style="flex:${count[q]};min-width:64px;padding:5px 8px;` +
       `background:${q === 'none' ? '#e6e6e6' : COLORS[q]};color:${q === 'none' ? '#555' : '#fff'}">` +
-      `<b>${q === 'NR' ? 'Not ranked' : q === 'none' ? 'Not in SCImago' : q}</b><br>` +
+      `<b>${q === 'NR' ? 'Not ranked' : q === 'none' ? 'Not in SCImago / conference' : q}</b><br>` +
       `${Math.round(100 * count[q] / seen.size)}% · ${count[q]}</div>`).join('') +
     `</div><span style="color:#777">Based on the ${seen.size} publications loaded so far; scroll down or click ` +
-    '"Show more" to include the rest. Conferences, books and preprints count as "Not in SCImago".' +
+    '"Show more" to include the rest. Grey: conference papers, books, preprints and journals missing from SCImago.' +
     (starred ? ' Ranks marked * come from journalseeker.com (older data).' : '') + '</span>';
   if (old) return old.replaceWith(box);
   // Right before the first publication (Scholar: before its table), never into the page layout around the list.
